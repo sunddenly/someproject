@@ -1,0 +1,14 @@
+package org.hebut.yu
+
+object ReadNumber extends App{
+  //val floats=io.Source.fromString("sdsad 45 90 sdsd").mkString.split("\\s+").map(_.toDouble)
+  //floats.foreach(println)
+  val str="89 dfs 77 89 sd"
+  val pattern="(\\d+[.]\\d+)".r
+  val pattern1="\\d+(\\.\\d+)?".r
+  val pattern2="^[0-9]+(\\.\\d+)?".r
+  pattern2.
+  val iterator=pattern2.findAllIn("dfd333.5d 33").toArray
+  println(iterator.length)
+  iterator.foreach(println)
+}

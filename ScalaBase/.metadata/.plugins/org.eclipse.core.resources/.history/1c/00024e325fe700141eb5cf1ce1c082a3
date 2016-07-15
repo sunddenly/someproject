@@ -1,0 +1,16 @@
+package org.hebut.yu
+
+import scala.io.Source
+import java.io.PrintWriter
+
+object ReverseLines extends App {
+  val filename="File.txt"
+  val RefileName="ReverseFile.txt"
+  val path="src\\"+filename
+  val source=Source.fromFile(filename)
+  val linesReader=source.getLines()
+  val pw = new PrintWriter("Reverse"+filename)
+  println(filename+"文件内容如下:")
+  linesReader.foreach (x => println(x))
+  
+}

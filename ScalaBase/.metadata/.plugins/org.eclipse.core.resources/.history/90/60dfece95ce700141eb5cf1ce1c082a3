@@ -1,0 +1,10 @@
+package org.hebut.yu
+
+import scala.io.Source
+
+object ReverseLines extends App {
+  val path="src/file.txt"
+  val source=Source.fromFile(path)
+  val linesReader=source.getLines()
+  linesReader.foreach { x => println(x) }
+}

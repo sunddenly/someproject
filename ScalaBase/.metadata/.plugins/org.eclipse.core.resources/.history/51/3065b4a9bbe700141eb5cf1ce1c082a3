@@ -1,0 +1,20 @@
+package org.hebut.yu
+
+import scala.io.Source
+import java.io.PrintWriter
+
+object TabSpace extends App{
+  val FileName="TabSpace"
+  val path="src\\"+FileName+".txt"
+  val linesIterator=Source.fromFile(path).getLines()
+  lazy val TabIterator=Source.fromFile(path).getLines()
+  val linesRecord=linesIterator.toArray
+  lazy val pw=new PrintWriter(path)
+  
+  linesRecord.foreach {
+    line =>pw.write(line.replaceAll(" ", "\t")+"\n")
+  }
+  pw.close
+  TabIterator.foreach(println)
+  
+}

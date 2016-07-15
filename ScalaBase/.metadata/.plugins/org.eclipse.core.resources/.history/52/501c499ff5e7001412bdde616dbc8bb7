@@ -1,0 +1,13 @@
+package org.hebut.yu
+import io.Source
+object NonFloat extends App{ 
+  val source = Source.fromFile("src\\NumberFile.txt").mkString
+  val pattern = """[^((\d+\.){0,1}\d+)^\s+]+""".r//去掉+试试
+  //pattern.findAllIn(source).foreach(println)
+  for(token <- source.split("\\s")){
+    //println(token)
+    for(word <- pattern.findAllIn(token))
+      println(word)
+  }
+    
+}

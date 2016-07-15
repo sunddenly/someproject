@@ -1,0 +1,5 @@
+package org.hebut.yu
+
+class Point(val x:Double,val y:Double) {
+  override toString="x= "+x+" y= "+y
+}

@@ -1,0 +1,8 @@
+object Sys {
+  import scala.io.StdIn
+  import java.lang.System._
+    if("secret"==new String(console.readPassword())){
+      
+    }
+  }
+}

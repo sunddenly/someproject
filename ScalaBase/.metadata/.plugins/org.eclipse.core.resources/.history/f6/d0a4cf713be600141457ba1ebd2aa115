@@ -1,0 +1,6 @@
+package org.hebut.yu;
+
+public class BankAccount(initialBalance:Double) {
+	private var balance=initialBalanc
+	
+}

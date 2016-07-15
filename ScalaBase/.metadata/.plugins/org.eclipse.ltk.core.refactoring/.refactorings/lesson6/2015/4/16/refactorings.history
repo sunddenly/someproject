@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;lesson6/src/org/hebut/yu/UniConverse.scala&apos; to &apos;UnitConversion.scala&apos;" description="Rename resource &apos;UniConverse.scala&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/org/hebut/yu/UniConverse.scala" name="UnitConversion.scala" stamp="1429167885177" updateReferences="true"/>
+</session>

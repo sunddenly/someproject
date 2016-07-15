@@ -1,0 +1,5 @@
+package org.hebut.yu
+
+class Point(Int x,Int y) {
+
+}

@@ -1,0 +1,101 @@
+%Kmeans Cluster Algorithm Based on Particle Optimization Algorithm
+clc;clear all;
+format long;
+tic
+%------初始化------------求最小值
+%数据，已经归一化
+sam=[1.0000   1.0000    0.7476    0.6267    0.1696    0.0710    0.2532    0.8110
+    0.3188    0.3656    0.8707    0.7704    0.5559    0.5153    0.9213    0.7017
+    0.5548    0.7423    1.0000    0.5910    1.0000    1.0000    0.8976    1.0000
+    0.7800    0.7181    0.6875    1.0000    0.2115    0.0214    0.1573    0.8938
+    0.2680    0.3238    0.9036    0.8210    0.5874    0.3840    0.7037    0.5142
+    0.6928    0.6630    0.7368    0.8787    0.1818    0.0786    0.2295    0.3820
+    0.4256    0.4978    0.8429    0.9161    0.7133    0.3130    1.0000    0.7809];
+N=50;%粒子数
+c1=1.2;c2=1.2;
+wmax=0.9;wmin=0.4;
+M=200;%最大迭代数
+K=4;%类别数，根据需要修改
+[S D]=size(sam);%样本数和特征维数
+v=rand(N,K*D);%初始速度
+%初始化分类矩阵
+for i=1:N
+clmat(i,:)=randperm(S);%随机取整数50*7
+end
+clmat(clmat>K)=fix(rand*K+1);%取整函数:fix(x), floor(x) :,ceil(x) , round(x)
+fitt=inf*ones(1,N);%初始化个体最优适应度
+fg=inf;%初始化群体最优适应度
+fljg=clmat(1,:);%当前最优分类
+x=zeros(N,K*D);%初始化粒子群位置
+y=x;%初始化个体最优解
+pg=x(1,:);%初始化群体最优解
+cen=zeros(K,D);%类别中心定维
+fitt2=fitt;%粒子适应度定维
+%------循环优化开始------------
+for t=1:M
+for i=1:N
+   ww = zeros(S,K);%
+   for ii = 1:S
+       ww(ii,clmat(i,ii)) = 1;%加权矩阵，元素非0即1
+   end
+   ccc=[];tmp=0;
+   for j = 1:K
+        sumcs = sum(ww(:,j)*ones(1,D).*sam);
+        countcs = sum(ww(:,j));       
+       if countcs==0
+          cen(j,:) =zeros(1,D);
+       else
+         cen(j,:) = sumcs/countcs;  %求类别中心
+       end
+       ccc=[ccc,cen(j,:)];%串联聚类中心
+       aa=find(ww(:,j)==1);
+       if length(aa)~=0
+            for k=1:length(aa)
+              tmp=tmp+(sum((sam(aa(k),:)-cen(j,:)).^2));
+            end
+       end
+   end
+   x(i,:)=ccc;
+   fitt2(i) = tmp; %Fitness value  
+end
+%更新群体和个体最优解
+for i=1:N
+        if fitt2(i)<fitt(i) 
+            fitt(i)=fitt2(i);
+            y(i,:)=x(i,:);%个体最优
+            if fitt2(i)<fg
+            pg=x(i,:);%群体最优
+            fg=fitt2(i);%群体最优适应度
+            fljg=clmat(i,:);%当前最优聚类
+            end
+        end
+   end
+bfit(t)=fg;%最优适应度记录
+w = wmax - t*(wmax-wmin)/M;%更新权重,线性递减权重法的粒子群算法
+       for i=1:N  
+           %更新粒子速度和位置
+            v(i,:)=w*v(i,:)+c1*rand(1,K*D).*(y(i,:)-x(i,:))+c2*rand(1,K*D).*(pg-x(i,:));
+            x(i,:)=x(i,:)+v(i,:);
+            for k=1:K
+            cen(k,:)=x((k-1)*D+1:k*D);%拆分粒子位置，获得K个中心
+            end
+            %重新归类
+            for j=1:S
+                    tmp1=zeros(1,K);
+                    for k=1:K
+                    tmp1(k)=sum((sam(j,:)-cen(k,:)).^2);%每个样本关于各类的距离
+                    end
+                    [tmp2 clmat(i,j)]=min(tmp1);%最近距离归类
+            end
+      end
+end
+%------循环结束------------
+t     %迭代次数
+fljg  %最优聚类输出
+fg    %最优适应度输出
+figure(1)
+plot(bfit);%绘制最优适应度轨迹
+%figure(2)
+%plot(x(1,:))
+cen  %聚类中心
+toc

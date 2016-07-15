@@ -1,0 +1,20 @@
+package org.hebut.yu
+ 
+class BankAccount(initialBalance:Double){
+  private var balance=initialBalance
+  def deposit(amount:Double)={
+    balance+=amount
+    balance
+  }
+  def withdraw(amount:Double)={
+    balance-=amount
+    balance
+  }
+}
+//一种实现
+class checkingAccount (initialBalance:Double) extends BankAccount(initialBalance){
+  override def deposit(amount:Double)={
+    super.deposit(amount-1)
+    super.withdraw(amount-1)
+  }  
+}

@@ -1,0 +1,13 @@
+package com{
+  package horstmann{
+    object A{
+      def hi=println("I am A")
+    }
+    package comsds{
+      object B extends App{
+        def hi=A.hi
+        hi
+      }
+    }
+  } 
+}

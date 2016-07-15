@@ -1,0 +1,12 @@
+package org.hebut.yu
+
+abstract class Item{
+  def price:Double
+  val c
+  
+}
+
+
+object ItemTest {
+  
+}

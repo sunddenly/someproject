@@ -1,0 +1,10 @@
+object Sys extends App{
+  import scala.io.StdIn
+  import java.lang.System._
+  if("secret"==new String(console.readPassword())){
+      val name=getProperty("user.name")
+      out.println("Greetings,%s",name)
+   }else{
+     err.println("error")
+   }
+}

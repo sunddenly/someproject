@@ -1,0 +1,7 @@
+package org.hebut.yu
+
+import java.awt.Point
+
+object Origin extends Point with App{
+  override def getLocation:Point=super.getLocation()
+}

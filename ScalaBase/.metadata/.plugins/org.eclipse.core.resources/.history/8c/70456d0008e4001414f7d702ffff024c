@@ -1,0 +1,14 @@
+package org.hebut.yu
+
+abstract class UnitConversion {
+  def Converse(from:Double):Double
+}
+object inchesToCentimeters extends UnitConversion{
+  private val i2c=30.48
+  override def Converse(inche:Double):Double={
+    inche*i2c
+  }
+}
+object gallonsToLiters extends UnitConversion{
+  
+}

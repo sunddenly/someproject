@@ -1,0 +1,16 @@
+package com{
+  package horstmann{
+    object A{
+      def hi=println("I am A")
+    }
+    package impatient{
+      object B {
+        def hi=A.hi    
+        def main(args: Array[String]): Unit = {
+          hi
+        }     
+      }
+    }
+    
+  } 
+}

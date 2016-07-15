@@ -1,0 +1,5 @@
+package main.scala.org.hebut.yu
+
+object WordCount {
+
+}

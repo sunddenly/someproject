@@ -1,0 +1,15 @@
+package org.hebut.yu
+
+class Employee(var name:String,var salary:Double){
+  def this(){
+    this("Jom Q. Public",0)
+  }
+}
+object Employee{
+  def main(args: Array[String]): Unit = {
+    val ITemployee=new Employee
+    val Bankemployee=new Employee("Tom Hanks",100000)
+    println("ITemployee Name: "+ITemployee.name+" Salary: "+ITemployee.salary)
+    println("Bankemployee Name: "+Bankemployee.name+" Salary: "+Bankemployee.salary)
+  }
+}

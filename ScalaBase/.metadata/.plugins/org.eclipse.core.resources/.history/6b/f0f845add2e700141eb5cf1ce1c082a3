@@ -1,0 +1,13 @@
+package org.hebut.yu
+
+object ReadNumber extends App{
+  val pattern="(\\d+[.]\\d+)".r
+  val pattern1="^\\d+(\\.\\d+)?".r
+  val pattern2="[0-9]+(\\.\\d+)?".r
+  val FileName="NumberFile"
+  val path = "src\\"+FileName+".txt"
+  val FileStr=io.Source.fromFile(path).mkString
+  val StrArray=pattern2.findAllIn(FileStr).toArray
+  StrArray.foreach { x => x.toDouble }
+  StrArray.foreach { x => println(x) }
+}

@@ -1,0 +1,11 @@
+package org.hebut.yu
+
+object NonFloat extends App{
+  import io.Source
+
+val source = Source.fromFile("test.txt").mkString
+
+val pattern = """[^((\d+\.){0,1}\d+)^\s+]+""".r
+
+pattern.findAllIn(source).foreach(println)
+}

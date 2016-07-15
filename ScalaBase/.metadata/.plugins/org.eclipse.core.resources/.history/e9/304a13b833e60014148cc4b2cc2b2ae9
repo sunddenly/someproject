@@ -1,0 +1,8 @@
+object Sys {
+  import scala.io.StdIn
+  import java.lang.System._
+  def main(args: Array[String]): Unit = {
+    val pass="123"
+    if(pass!=null&&"secret"==new String(console.readPassword()))
+  }
+}

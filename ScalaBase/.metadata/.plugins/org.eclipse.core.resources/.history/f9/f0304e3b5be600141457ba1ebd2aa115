@@ -1,0 +1,46 @@
+package org.hebut.yu
+
+import sun.tools.jar.Main
+
+class SavingsAccount(initialBalance:Double) extends BankAccount(initialBalance){
+  private var freeCount=3
+  private val interestRate=0.03
+  def CurrentCount = freeCount
+  def earnMonthlyInterrest:Double={
+    freeCount=3
+    super.deposit(super.deposit(0)*interestRate)
+    super.deposit(0)*interestRate
+  }
+  override def deposit(amount:Double):Double={
+    if(freeCount>0){
+      freeCount-=1
+      println("dfdfdfdf")
+      super.deposit(amount)
+    }else{
+      super.deposit(amount-1)
+    }
+  }
+  override def withdraw(amount:Double):Double={
+    if(freeCount>0){
+      freeCount-=1
+      super.withdraw(amount)
+    }else{
+      super.withdraw(amount+1)
+    }
+  }
+}
+object SaveTest{
+  val dbal=1000
+  val wbal=1000
+  val sa=new SavingsAccount(1000)
+  def main(args: Array[String]): Unit = {
+    for(i<- 1 to 35){
+      if(i>=1&& i<=5)
+        println("第"+i+"次存钱存入: "+dbal+"余额: "+sa.currentBalance+" 免费次数: "+sa.CurrentCount)
+      else if(i>=29&&i<=32){
+        println("第"+i+"次存钱存入: "+dbal+"余额: "+sa.currentBalance+" 免费次数: "+sa.CurrentCount)
+      }
+    }
+    println("一个月的利息为: "+sa.earnMonthlyInterrest+" 免费次数: "+sa.CurrentCount)
+  }
+}

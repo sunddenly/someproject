@@ -1,0 +1,10 @@
+package org.hebut.yu
+
+object PorkerFace extends Enumeration {
+  type ProkerFace=Value
+  val SPADES=Value("♠")
+  val HEARTS=Value("♥")
+  val DIAMONDS=Value("♢")
+  val CLUBS=Value("♧")
+  
+}

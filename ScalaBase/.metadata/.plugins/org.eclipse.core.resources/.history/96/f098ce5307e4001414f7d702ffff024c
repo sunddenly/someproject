@@ -1,0 +1,6 @@
+package org.hebut.yu
+
+abstract class UnitConversion {
+  def Converse(from:Double):Double
+}
+object inchesToCentimeters(Double)

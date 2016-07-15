@@ -1,0 +1,17 @@
+package org.hebut.yu
+
+import scala.io.Source
+
+object regExp extends App{
+  val FileName="Regexp"
+  val path="src\\"+FileName+".txt"
+  val pat="""like this，maybe with \\" or\\""".r
+  val linesIterator1=Source.fromFile(path).getLines()
+  val linesIterator2=Source.fromString("like this，maybe with \" or\\").getLines()
+  println("like this，maybe with \" or\\"+"sss")
+  linesIterator1.foreach(line=>pat.findAllIn(line.toString()).foreach (println))
+  //linesIterator1.foreach(println)
+  linesIterator2.foreach(println)
+
+  
+}

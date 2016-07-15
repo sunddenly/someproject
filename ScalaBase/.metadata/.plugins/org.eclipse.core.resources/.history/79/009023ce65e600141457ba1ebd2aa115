@@ -1,0 +1,36 @@
+package org.hebut.yu
+
+abstract class Item{
+  def price:Double
+  def description:String
+}
+class SimpleItem(override val price:Double,override val description:String) extends Item{
+  
+}
+
+class Bundle() extends Item{
+  val itemList=scala.collection.mutable.ArrayBuffer[Item]()
+  def addItem(item:Item){
+    itemList+=item
+  }
+  override def price={
+    var p:Double=0
+    itemList.foreach(i=>p=p+i.price)
+    p
+  }
+  override def description={
+    var des=""
+    itemList.foreach(i=>des=des+i.description)
+    des
+  }
+}
+object ItemTest {
+  val bundle=new Bundle
+  def main(args: Array[String]): Unit = {
+    val priceArr=Array(2.5,100,3.5,40,32.5)
+    val desArr=Array("铅笔","水杯","笔记本","火腿肠","鼠标")
+    for(price<-priceArr;des<- desArr){
+      bundle.addItem(new SimpleItem(price,des))
+    }
+  }
+}

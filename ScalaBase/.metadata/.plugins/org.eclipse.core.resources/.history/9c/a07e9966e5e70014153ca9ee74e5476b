@@ -1,0 +1,11 @@
+package org.hebut.yu
+
+import scala.io.Source
+
+object regExp extends App{
+  val FileName="Regexp"
+  val path="src\\"+FileName+".txt"
+  val pat="""like this，maybe with \" or\\"""
+  val LinesIterator=Source.fromFile(path).getLines()
+  
+}

@@ -1,0 +1,34 @@
+package org.hebut.yu
+ 
+class BnkAccount(initialBalance:Double){
+  private var balance=initialBalance
+  def deposit(amount:Double)={
+    balance+=amount
+    balance
+  }
+  def withdraw(amount:Double)={
+    balance-=amount
+    balance
+  }
+  def currentBalance=balance
+}
+//一种实现
+class checkingAccount (initialBalance:Double) extends BankAccount(initialBalance){
+  override def deposit(amount:Double)={
+    super.deposit(amount-1)
+  }  
+  override def withdraw(amount:Double)={
+    super.withdraw(amount+1)
+  }
+}
+object checkingAccount{
+  val cha=new checkingAccount(1000)
+  val dbal=1000
+  val wbal=800
+  def main(args: Array[String]): Unit = {
+    cha.deposit(dbal)
+    println("存入 :"+dbal+" 余额: "+cha.currentBalance)
+    cha.withdraw(wbal)
+    println("取出 :"+wbal+" 余额: "+cha.currentBalance)
+  }
+}

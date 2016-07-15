@@ -1,0 +1,11 @@
+package org.hebut.yu
+
+abstract class Item{
+  def price:Double
+  def description:String
+}
+
+
+object ItemTest {
+  
+}

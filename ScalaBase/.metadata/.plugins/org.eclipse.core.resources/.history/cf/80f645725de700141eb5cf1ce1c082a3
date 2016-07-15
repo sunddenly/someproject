@@ -1,0 +1,10 @@
+package org.hebut.yu
+
+import scala.io.Source
+
+object ReverseLines extends App {
+  val path="E:\\git\\Scala\\ScalaBase\\lesson9\\src\\org\\hebut\\yu\\file.txt"
+  val source=Source.fromFile(path)
+  val linesReader=source.getLines()
+  linesReader.foreach { x => println(x) }
+}

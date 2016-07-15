@@ -1,0 +1,16 @@
+package org.hebut.yu
+
+abstract class Item{
+  def price:Double
+  def description:String
+}
+class SimpleItem(override val price:Double,override val description:String) extends Item{
+  
+}
+
+class Bundle(val item:Item) extends Item{
+  
+}
+object ItemTest {
+  
+}

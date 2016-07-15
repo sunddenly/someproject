@@ -1,0 +1,14 @@
+import java.util.{HashMap=>JHashMap}
+import scala.collection.mutable.HashMap
+object JavaMap {
+  def transMapValues(javaMap:JHashMap[Any,Any]):HashMap[Any,Any]={
+    val result=new HashMap[Any,Any]
+    for(k <- javaMap.keySet().toArray()){
+      result+=k->javaMap.get(k)
+    }
+    result
+  }
+  def main(args: Array[String]): Unit = {
+    var jmap=new JHashMap[Any,Any]
+  }
+}

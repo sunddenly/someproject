@@ -1,0 +1,26 @@
+package org.hebut.yu
+
+class SavingsAccount(initialBalance:Double) extends BankAccount(initialBalance){
+  private var freeCount=3
+  private val interestRate=0.03
+  def earnMonthlyInterrest(){
+    freeCount=3
+    super.deposit(super.deposit(0)*interestRate)
+  }
+  override def deposit(amount:Double):Double={
+    if(freeCount>0){
+      freeCount-=1
+      super.deposit(amount)
+    }else{
+      super.deposit(amount-1)
+    }
+  }
+  override def withdraw(amount:Double):Double={
+    if(freeCount>0){
+      freeCount-=1
+      super.withdraw(amount)
+    }else{
+      super.withdraw(amount+1)
+    }
+  }
+}

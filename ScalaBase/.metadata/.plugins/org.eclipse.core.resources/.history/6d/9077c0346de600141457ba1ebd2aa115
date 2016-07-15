@@ -1,0 +1,8 @@
+package org.hebut.yu
+import org.hebut.yu.{Point=>defPoint}
+import java.awt.Point
+import java.awt.Rectangle
+
+object SquareTest {
+
+}

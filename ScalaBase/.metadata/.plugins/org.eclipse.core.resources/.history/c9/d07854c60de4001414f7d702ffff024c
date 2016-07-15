@@ -1,0 +1,7 @@
+package org.hebut.yu
+
+class Point(x:Int,y:Int) {
+  override def toString():String={
+    
+  }
+}

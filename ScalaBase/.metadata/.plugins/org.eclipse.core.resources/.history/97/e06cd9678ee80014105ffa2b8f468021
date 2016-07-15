@@ -1,0 +1,22 @@
+package main.scala.org.hebut.yu
+
+/**
+ * 统计字符出现次数
+ */
+object WordCount {
+  def main(args: Array[String]) {
+    if (args.length < 2) {
+      System.err.println("Usage: <file>")
+      System.exit(1)
+    }
+
+    val conf = new SparkConf()
+    val sc = new SparkContext(conf)
+    val line = sc.textFile(args(0))
+    //输出到文件
+    line.flatMap(_.split(" ")).map((_, 1)).reduceByKey(_+_).saveAsTextFile(args(1))
+    //输出到屏幕
+    line.flatMap(_.split(" ")).map((_, 1)).reduceByKey(_+_).collect().foreach(println)
+    sc.stop()
+  }
+}
